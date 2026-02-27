@@ -1,0 +1,6 @@
+name,score,passed
+Alice,85,True
+Bob,72,True
+Carol,60,False
+Diana,91,True
+Eve,45,False
