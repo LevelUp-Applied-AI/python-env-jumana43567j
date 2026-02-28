@@ -9,8 +9,8 @@
 
 
 def format_report(label, value):
-    return "Score — " + label + ": " + value
+    return "Score — " + label + ": " + str(value)
 
 
 if __name__ == "__main__":
-    print(format_report("Alice", "92"))
+    print(format_report("Alice", 92))
