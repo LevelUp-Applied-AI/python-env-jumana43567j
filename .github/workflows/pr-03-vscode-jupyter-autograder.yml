@@ -1,0 +1,25 @@
+name: PR 3 Autograder — Notebook vs Script
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  autograder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch latest tests
+        run: git fetch origin main && git checkout origin/main -- tests/
+
+      - name: Install dependencies
+        run: pip install pytest pandas
+
+      - name: Run autograder
+        run: pytest tests/ -v

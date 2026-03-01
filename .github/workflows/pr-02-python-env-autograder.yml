@@ -1,0 +1,25 @@
+name: PR-02 Autograder — Python venv Bootstrap + Sanity Script
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  autograder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install requirements and pytest
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements-prework.txt pytest
+
+      - name: Run autograder
+        run: pytest tests/test_pr_02_python_env.py -v
